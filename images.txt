@@ -1,1 +1,1 @@
---platform=linux/arm64 nginx
+postgres:15
