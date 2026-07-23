@@ -1,1 +1,1 @@
-harlancn/xiu:latest
+harlancn/xiu:0.12.7
