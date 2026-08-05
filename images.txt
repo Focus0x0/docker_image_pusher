@@ -1,1 +1,1 @@
-dhi.io/kafka:4-debian-dev
+apache/kafka:4.3.1
