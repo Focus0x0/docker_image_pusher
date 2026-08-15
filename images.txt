@@ -1,1 +1,2 @@
-docker.dragonflydb.io/dragonflydb/dragonfly
+mariadb:11.8
+mysql:8
