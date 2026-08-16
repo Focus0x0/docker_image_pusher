@@ -1,1 +1,1 @@
-php:8.4-fpm-bookworm
+mlocati/php-extension-installer:2
