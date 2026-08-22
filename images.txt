@@ -1,1 +1,1 @@
-mlocati/php-extension-installer:2
+certbot/certbot
