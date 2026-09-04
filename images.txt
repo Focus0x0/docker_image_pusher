@@ -1,1 +1,1 @@
-emqx/emqx:6
+madduci/docker-wine-msvc:17.8-2022
