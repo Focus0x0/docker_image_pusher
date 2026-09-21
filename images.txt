@@ -1,1 +1,2 @@
-influxdata/influxdb3-ui:1.9.0
+amd64/chronograf:1.11.4
+
