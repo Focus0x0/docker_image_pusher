@@ -1,1 +1,1 @@
-gloridust/woc-panel
+gloridust/wechat-on-cloud
