@@ -39,6 +39,17 @@ jobs:
         # remove-codeql: 'true'
         build-mount-path: '/var/lib/docker/'
 
+    - name: Configure Docker to use overlay2 (not containerd snapshotter)
+      run: |
+        sudo mkdir -p /etc/docker
+        sudo tee /etc/docker/daemon.json >/dev/null <<'EOF'
+        {
+          "storage-driver": "overlay2",
+          "data-root": "/var/lib/docker"
+        }
+        EOF
+        sudo systemctl restart docker
+
     - name: Restart docker
       run: sudo service docker restart
 
