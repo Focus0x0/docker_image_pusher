@@ -80,6 +80,27 @@ jobs:
         echo "=== Deleted files still open ==="
         sudo lsof +L1 2>/dev/null | head -50
 
+    - name: Find hidden root disk usage
+      run: |
+        set +e
+
+        echo "=== Root-level files ==="
+        sudo find / -xdev -maxdepth 1 -type f \
+          -printf '%s %p\n' 2>/dev/null |
+          sort -n | tail -30
+
+        echo "=== All mounts under root ==="
+        findmnt -R /
+
+        echo "=== Largest files on root filesystem ==="
+        sudo find / -xdev -type f -size +500M \
+          -printf '%s %p\n' 2>/dev/null |
+          sort -n | tail -50
+
+        echo "=== Largest directories, excluding other filesystems ==="
+        sudo du -xah / 2>/dev/null |
+          sort -h | tail -60
+
     - name: Checkout Code
       uses: actions/checkout@v4
 
