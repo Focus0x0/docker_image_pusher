@@ -49,6 +49,37 @@ jobs:
         df -hT
         echo "=============================================================================="
 
+    - name: Diagnose full root filesystem
+      run: |
+        set +e
+
+        echo "=== Filesystems ==="
+        df -hT
+        echo "=== Inodes ==="
+        df -i
+
+        echo "=== Root directories (same filesystem only) ==="
+        sudo du -xhd1 / 2>/dev/null | sort -h
+
+        echo "=== /var directories (same filesystem only) ==="
+        sudo du -xhd1 /var 2>/dev/null | sort -h
+
+        echo "=== Containerd storage ==="
+        df -h /var/lib/containerd
+        sudo du -xhd2 /var/lib/containerd 2>/dev/null | sort -h | tail -50
+
+        echo "=== Docker storage ==="
+        df -h /var/lib/docker
+        docker info 2>/dev/null | grep -E \
+          'Docker Root Dir|Storage Driver|containerd'
+
+        echo "=== Mounts ==="
+        findmnt /var/lib/docker
+        findmnt /var/lib/containerd
+
+        echo "=== Deleted files still open ==="
+        sudo lsof +L1 2>/dev/null | head -50
+
     - name: Checkout Code
       uses: actions/checkout@v4
 
