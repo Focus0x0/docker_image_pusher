@@ -1,1 +1,1 @@
-mstorsjo/llvm-mingw:20260616
+ubuntu:noble
