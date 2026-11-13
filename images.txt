@@ -1,1 +1,1 @@
-ubuntu:noble
+smanx/deepseek-harness
