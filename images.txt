@@ -1,2 +1,1 @@
-smanx/deepseek-harness
-
+runzhliu/deepseek-harness:0.2.2-rc.3-r1-superagent.1
